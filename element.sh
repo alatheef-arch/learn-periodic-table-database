@@ -21,7 +21,8 @@ if [[ -z $ELEMENT_DATA ]]
 then
   echo "I could not find that element in the database."
 else
-  echo "$ELEMENT_DATA | while IFS="|" read ATOMIC_NUMBER SYMBOL TYPE MASS MELTING BOILING
+  # FIXED: Closed the quote after $ELEMENT_DATA and added NAME to the read variables
+  echo "$ELEMENT_DATA" | while IFS="|" read ATOMIC_NUMBER NAME SYMBOL TYPE MASS MELTING BOILING
   do
     echo "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING celsius and a boiling point of $BOILING celsius."
   done
